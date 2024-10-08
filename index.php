@@ -16,10 +16,11 @@
     </div>
 
     <?php
+
     if (isset($_GET['component'])) {
         switch ($_GET['component']) {
             case 'outils':
-                include 'outil.php'; // Inclus l'outil
+                include 'module/mod_outil/index_outil.php'; // Inclus l'outil
                 break;
             case 'themes':
                 include 'theme.php'; // Inclus le thème
