@@ -23,7 +23,7 @@
                 include 'module/mod_outil/index_outil.php'; // Inclus l'outil
                 break;
             case 'themes':
-                include 'theme.php'; // Inclus le thème
+                include 'module/mod_theme/index_theme.php'; // Inclus le thème
                 break;
             case 'signataires':
                 include 'signataire.php'; // Inclus le signataire
