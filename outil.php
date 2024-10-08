@@ -26,10 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Supprimer un outil
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
     $id = $_GET['id'];
-    $stmt = $pdo->prepare('DELETE FROM outils WHERE id = ?');
-    $stmt->execute([$id]);
 
-    echo "Outil supprimé avec succès !";
+    // Vérifier si l'ID est valide avant de tenter la suppression
+    if (!empty($id)) {
+        $stmt = $pdo->prepare('DELETE FROM outils WHERE id = ?');
+        $stmt->execute([$id]);
+        echo "Outil supprimé avec succès !";
+    } else {
+        echo "ID d'outil invalide.";
+    }
 }
 
 // Récupérer un outil pour la modification
@@ -60,7 +65,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['id'])) 
         <br>
         <!-- Bouton pour réinitialiser le formulaire et ajouter un nouvel outil -->
         <form method="GET" action="">
-            <button type="submit">Ajouter un nouvel outil</button>
+            <input type="hidden" name="component" value="outils">
+            <button type="submit">Retour</button>
         </form>
     <?php else: ?>
         <h1>Ajouter un Outil</h1>
@@ -86,8 +92,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['id'])) 
                 <td>{$outil['id']}</td>
                 <td>{$outil['nom']}</td>
                 <td>
-                    <a href='?action=edit&id={$outil['id']}'>Modifier</a>
-                    <a href='?action=delete&id={$outil['id']}'>Supprimer</a>
+                    <a href='?component=outils&action=edit&id={$outil['id']}'>Modifier</a>
+                    <a href='?component=outils&action=delete&id={$outil['id']}'>Supprimer</a>
                 </td>
             </tr>";
         }
