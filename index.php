@@ -5,9 +5,8 @@
     <title>Gestion des Outils, Thèmes et Signataires</title>
 </head>
 <body>
-    <h1>Gestion des Composants</h1>
+    <h1>Régions & Formation</h1>
     <div>
-        <h2>Choisissez un composant à gérer :</h2>
         <form method="GET">
             <button type="submit" name="component" value="outils">Gérer les Outils</button>
             <button type="submit" name="component" value="themes">Gérer les Thèmes</button>
@@ -26,7 +25,7 @@
                 include 'module/mod_theme/index_theme.php'; // Inclus le thème
                 break;
             case 'signataires':
-                include 'signataire.php'; // Inclus le signataire
+                include 'module/mod_signataire/index_signataire.php'; // Inclus le signataire
                 break;
             default:
                 echo "<p>Sélectionnez un composant.</p>";
