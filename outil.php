@@ -32,7 +32,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
     echo "Outil supprimé avec succès !";
 }
 
-// Récupérer un outil pour modification
+// Récupérer un outil pour la modification
 if (isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['id'])) {
     $id = $_GET['id'];
     $stmt = $pdo->prepare('SELECT * FROM outils WHERE id = ?');
